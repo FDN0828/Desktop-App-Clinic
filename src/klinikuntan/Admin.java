@@ -4,8 +4,14 @@
  */
 package klinikuntan;
 
+//import java.awt.List;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author USER
@@ -2480,12 +2486,10 @@ public class Admin extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
             conn.close();
-            
-            
-        }
-        catch (Exception e) {
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Terjadi Kegagalan");
-    }
+        }
 
     }//GEN-LAST:event_buttonTambahActionPerformed
 
@@ -2514,7 +2518,7 @@ public class Admin extends javax.swing.JFrame {
             pst.setString(1, deleteDokter.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Terjadi Kegagalan");
         }
     }//GEN-LAST:event_buttonDeleteActionPerformed
@@ -2604,7 +2608,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_textHapusPasienActionPerformed
 
     private void buttonTambahPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahPasienActionPerformed
-        
+
     }//GEN-LAST:event_buttonTambahPasienActionPerformed
 
     private void buttonPerbaruiPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPerbaruiPasienActionPerformed
@@ -2624,7 +2628,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_hpKaryawanActionPerformed
 
     private void buttonTambahKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahKaryawanActionPerformed
-         try {
+        try {
             //Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
             String sql = "INSERT INTO karyawan(id_karyawan, kd_bagian, kd_shift, nama, jenis_kelamin, alamat, tgl_lahir, no_hp, jabatan, password) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -2642,12 +2646,10 @@ public class Admin extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
             conn.close();
-            
-            
-        }
-        catch (SQLException e) {
+
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Terjadi Kegagalan");
-    }
+        }
     }//GEN-LAST:event_buttonTambahKaryawanActionPerformed
 
     private void buttonTambahKaryawan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahKaryawan1ActionPerformed
@@ -2674,8 +2676,8 @@ public class Admin extends javax.swing.JFrame {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, deleteKaryawan.getText());
             pst.execute();
-        }catch(Exception e){
-            
+        } catch (Exception e) {
+
         }
     }//GEN-LAST:event_buttonHapusKaryawanActionPerformed
 
@@ -2685,7 +2687,7 @@ public class Admin extends javax.swing.JFrame {
 
     private void buttonTambahPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahPemeriksaanActionPerformed
         // TODO add your handling code here:
-         try {
+        try {
             //Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Adwira121804");
             String sql = "INSERT INTO pemeriksaan(nik, kd_bagian, id_karyawan, diagnosa, keluhan, tgl_periksa) VALUES(?, ?, ?, ?,?,curdate());";
@@ -2708,7 +2710,7 @@ public class Admin extends javax.swing.JFrame {
 
     private void buttonPerbaruiPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPerbaruiPemeriksaanActionPerformed
         // TODO add your handling code here:
-        
+
         try {
             //Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Adwira121804");
@@ -2747,7 +2749,75 @@ public class Admin extends javax.swing.JFrame {
 
     private void buttonCariPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariPemeriksaanActionPerformed
         // TODO add your handling code here:
-        
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Adwira121804");
+            DefaultTableModel model = new DefaultTableModel();
+//            String query = "select * from pemeriksaan where kd_periksa  like %?% or nik like %?% or id_karyawan like %?%";
+
+            String query = "select * from pemeriksaan where kd_periksa like ? OR nik like ? OR id_karyawan like ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            String userInput = textCariPemeriksaan.getText();
+            stmt.setString(1, "%" + userInput + "%"); // Add wildcards before and after user input
+            stmt.setString(2, "%" + userInput + "%");
+            stmt.setString(3, "%" + userInput + "%");
+
+            Object[] header = {"Kode Periksa", "NIK", "Kode Bagian", "ID Karyawan", "Keluhan", "Diagnosa", "Tanggal Periksa"};
+            Object[][] matchedData = null;
+            List<Object[]> rows = new ArrayList<>();
+//             Object[] rowData;// Assuming 10 rows and 3 columns (adjust as needed)
+            int rowCount = 0;
+
+            try {
+                ResultSet rs = stmt.executeQuery();
+
+                // Process query results
+                while (rs.next()) {
+                    String kd_periksa = rs.getString("kd_periksa");
+                    String nik = rs.getString("nik");
+                    String kd_bagian = rs.getString("kd_bagian");
+                    String id_karyawan = rs.getString("id_karyawan");
+                    String keluhan = rs.getString("Keluhan");
+                    String diagnosa = rs.getString("diagnosa");
+                    String tgl_periksa = rs.getString("tgl_periksa");
+
+                    // Compare data to user input
+                    if (String.valueOf(kd_periksa).contains(userInput) || nik.contains(userInput)
+                            || kd_bagian.contains(userInput) || id_karyawan.contains(userInput)) {
+
+                        System.out.println(nik);
+                        String[] rowData = {kd_periksa, nik, kd_bagian, id_karyawan, keluhan, diagnosa, tgl_periksa};
+
+                        // Add the row data to the table model
+//                        model.addRow(rowData);
+                        rows.add(rowData);
+//                        
+                        rowCount++;
+
+                    }
+                }
+
+                matchedData = new Object[rows.size()][];
+                for (int i = 0; i < rows.size(); i++) {
+                    matchedData[i] = rows.get(i);
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "error");
+            }
+
+//        PreparedStatement pst = conn.prepareStatement(query);
+//        pst.setString(1, textCariPemeriksaan.getText());
+//        pst.executeUpdate();
+//        tableCariPemeriksaan.setTableHeader(header);
+//            model.setColumnIdentifiers(header);
+            model.setDataVector(matchedData, header);
+            tableCariPemeriksaan.setModel(model);
+//            JOptionPane.showMessageDialog(null, "Data berhasil diperbarui");
+            conn.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan");
+        }
+
     }//GEN-LAST:event_buttonCariPemeriksaanActionPerformed
 
     private void buttonHapusKodePemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHapusKodePemeriksaanActionPerformed
@@ -2820,16 +2890,24 @@ public class Admin extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
