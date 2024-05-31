@@ -2685,10 +2685,60 @@ public class Admin extends javax.swing.JFrame {
 
     private void buttonTambahPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahPemeriksaanActionPerformed
         // TODO add your handling code here:
+         try {
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Adwira121804");
+            String sql = "INSERT INTO pemeriksaan(nik, kd_bagian, id_karyawan, diagnosa, keluhan, tgl_periksa) VALUES(?, ?, ?, ?,?,curdate());";
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            pst.setString(1, textNIKPasienPemeriksaan.getText());
+            pst.setString(2, textKodeBagianPemeriksaan.getText());
+            pst.setString(3, textIDKaryawanPemeriksaan.getText());
+            pst.setString(4, textDiagnosaPemeriksaan.getText());
+            pst.setString(5, textKeluhanPemeriksaan.getText());
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
+            conn.close();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan");
+        }
     }//GEN-LAST:event_buttonTambahPemeriksaanActionPerformed
 
     private void buttonPerbaruiPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPerbaruiPemeriksaanActionPerformed
         // TODO add your handling code here:
+        
+        try {
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Adwira121804");
+            String nik = textNIKPasienPemeriksaan1.getText();
+            String kodeBagian = textKodeBagianPemeriksaan1.getText(); // Assuming this is the value for kd_bagian
+            String idKaryawan = textIDKaryawanPemeriksaan1.getText(); // Assuming this is the value for id_karyawan
+            String diagnosa = textDiagnosaPemeriksaan1.getText(); // Assuming this is the value for Diagnosa
+            String keluhan = textKeluhanPemeriksaan1.getText();
+            String sql = "UPDATE pemeriksaan SET "
+                    + "kd_bagian = IFNULL(?, kd_bagian), "
+                    + // Use IFNULL to set NULL if value is null
+                    "id_karyawan = IFNULL(?, id_karyawan), "
+                    + "Diagnosa = IFNULL(?, Diagnosa), "
+                    + "keluhan = IFNULL(?, keluhan) "
+                    + "WHERE nik = ?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            pst.setString(1, kodeBagian == null ? null : kodeBagian); // Check for null values
+            pst.setString(2, idKaryawan == null ? null : idKaryawan);
+            pst.setString(3, diagnosa == null ? null : diagnosa);
+            pst.setString(4, keluhan == null ? null : keluhan);
+            pst.setString(5, nik);
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Data berhasil diperbarui");
+            conn.close();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan");
+        }
     }//GEN-LAST:event_buttonPerbaruiPemeriksaanActionPerformed
 
     private void textCariPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCariPemeriksaanActionPerformed
@@ -2697,10 +2747,27 @@ public class Admin extends javax.swing.JFrame {
 
     private void buttonCariPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariPemeriksaanActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_buttonCariPemeriksaanActionPerformed
 
     private void buttonHapusKodePemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHapusKodePemeriksaanActionPerformed
         // TODO add your handling code here:
+        try {
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Adwira121804");
+//            String find = textHapusPemeriksaan.getText();
+            String sql = "delete from pemeriksaan where kd_periksa = ?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            pst.setString(1, textHapusPemeriksaan.getText());
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Data berhasil diperbarui");
+            conn.close();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan");
+        }
     }//GEN-LAST:event_buttonHapusKodePemeriksaanActionPerformed
 
     private void textHapusPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textHapusPemeriksaanActionPerformed
