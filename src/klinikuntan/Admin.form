@@ -1220,7 +1220,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="scrollPane" pref="554" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="textSearch" max="32767" attributes="0"/>
+                                  <Component id="textCariDokter" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                   <Component id="buttonSearch" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1234,7 +1234,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="textSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="textCariDokter" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="buttonSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1245,14 +1245,14 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="textSearch">
+                <Component class="javax.swing.JTextField" name="textCariDokter">
                   <Properties>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[300, 25]"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textSearchActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textCariDokterActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="buttonSearch">
@@ -1273,7 +1273,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="tableSearch">
+                    <Component class="javax.swing.JTable" name="tableCariDokter">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="4">
@@ -2523,7 +2523,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="scrollPaneObat" alignment="0" pref="554" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="textSearchObat" max="32767" attributes="0"/>
+                                  <Component id="textCariObat" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                   <Component id="buttonSearchObat" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -2537,7 +2537,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="textSearchObat" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="textCariObat" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="buttonSearchObat" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -2548,14 +2548,14 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="textSearchObat">
+                <Component class="javax.swing.JTextField" name="textCariObat">
                   <Properties>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[300, 25]"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textSearchObatActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textCariObatActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="buttonSearchObat">
@@ -3358,6 +3358,9 @@
                       <Dimension value="[80, 25]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonTambahShiftActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -3488,6 +3491,9 @@
                       <Dimension value="[80, 25]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonUpdateShiftActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

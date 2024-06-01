@@ -7,6 +7,11 @@ package klinikuntan;
 import java.math.BigDecimal;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -108,10 +113,10 @@ public class Admin extends javax.swing.JFrame {
         buttonUpdate = new javax.swing.JButton();
         upGenderDokter = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
-        textSearch = new javax.swing.JTextField();
+        textCariDokter = new javax.swing.JTextField();
         buttonSearch = new javax.swing.JButton();
         scrollPane = new javax.swing.JScrollPane();
-        tableSearch = new javax.swing.JTable();
+        tableCariDokter = new javax.swing.JTable();
         jPanel24 = new javax.swing.JPanel();
         deleteDokter = new javax.swing.JTextField();
         buttonDelete = new javax.swing.JButton();
@@ -192,7 +197,7 @@ public class Admin extends javax.swing.JFrame {
         labelStok3 = new javax.swing.JLabel();
         uphargaObat = new javax.swing.JTextField();
         panelCariObat = new javax.swing.JPanel();
-        textSearchObat = new javax.swing.JTextField();
+        textCariObat = new javax.swing.JTextField();
         buttonSearchObat = new javax.swing.JButton();
         scrollPaneObat = new javax.swing.JScrollPane();
         tableSearchObat = new javax.swing.JTable();
@@ -905,10 +910,10 @@ public class Admin extends javax.swing.JFrame {
 
         dokterTabbedPane.addTab("Perbarui", jPanel23);
 
-        textSearch.setPreferredSize(new java.awt.Dimension(300, 25));
-        textSearch.addActionListener(new java.awt.event.ActionListener() {
+        textCariDokter.setPreferredSize(new java.awt.Dimension(300, 25));
+        textCariDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textSearchActionPerformed(evt);
+                textCariDokterActionPerformed(evt);
             }
         });
 
@@ -922,7 +927,7 @@ public class Admin extends javax.swing.JFrame {
 
         scrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        tableSearch.setModel(new javax.swing.table.DefaultTableModel(
+        tableCariDokter.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -933,7 +938,7 @@ public class Admin extends javax.swing.JFrame {
                 "", "", "", ""
             }
         ));
-        scrollPane.setViewportView(tableSearch);
+        scrollPane.setViewportView(tableCariDokter);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -944,7 +949,7 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(textSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(textCariDokter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(35, 35, 35)
                         .addComponent(buttonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(49, 49, 49))
@@ -954,7 +959,7 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textCariDokter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
@@ -1648,10 +1653,10 @@ public class Admin extends javax.swing.JFrame {
 
         obatTabbedPane.addTab("Perbarui", panelPerbaruiObat);
 
-        textSearchObat.setPreferredSize(new java.awt.Dimension(300, 25));
-        textSearchObat.addActionListener(new java.awt.event.ActionListener() {
+        textCariObat.setPreferredSize(new java.awt.Dimension(300, 25));
+        textCariObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textSearchObatActionPerformed(evt);
+                textCariObatActionPerformed(evt);
             }
         });
 
@@ -1687,7 +1692,7 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(panelCariObatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollPaneObat, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
                     .addGroup(panelCariObatLayout.createSequentialGroup()
-                        .addComponent(textSearchObat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(textCariObat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(35, 35, 35)
                         .addComponent(buttonSearchObat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(49, 49, 49))
@@ -1697,7 +1702,7 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(panelCariObatLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(panelCariObatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textSearchObat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textCariObat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonSearchObat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollPaneObat, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
@@ -2082,6 +2087,11 @@ public class Admin extends javax.swing.JFrame {
 
         buttonTambahShift.setText("Tambah");
         buttonTambahShift.setPreferredSize(new java.awt.Dimension(80, 25));
+        buttonTambahShift.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonTambahShiftActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelTambahShiftLayout = new javax.swing.GroupLayout(panelTambahShift);
         panelTambahShift.setLayout(panelTambahShiftLayout);
@@ -2162,6 +2172,11 @@ public class Admin extends javax.swing.JFrame {
 
         buttonUpdateShift.setText("Perbarui");
         buttonUpdateShift.setPreferredSize(new java.awt.Dimension(80, 25));
+        buttonUpdateShift.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonUpdateShiftActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelUpdateShiftLayout = new javax.swing.GroupLayout(panelUpdateShift);
         panelUpdateShift.setLayout(panelUpdateShiftLayout);
@@ -2556,12 +2571,65 @@ public class Admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonUpdateActionPerformed
 
-    private void textSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSearchActionPerformed
+    private void textCariDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCariDokterActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textSearchActionPerformed
+    }//GEN-LAST:event_textCariDokterActionPerformed
 
     private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
-        // TODO add your handling code here:
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
+            DefaultTableModel model = new DefaultTableModel();
+            String query = "select * from dokter where no_str like ? OR id_karyawan like ? OR nama like ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            String userInput = textCariDokter.getText();
+            stmt.setString(1, "%" + userInput + "%");
+            stmt.setString(2, "%" + userInput + "%");
+            stmt.setString(3, "%" + userInput + "%");
+
+            Object[] header = {"Nomor STR", "ID Karyawan", "Kode Bagian", "Nama Dokter", "Jenis Kelamin", "Alamat", "Tanggal Lahir", "Nomor HP"};
+            Object[][] matchedData = null;
+            List<Object[]> rows = new ArrayList<>();
+            int rowCount = 0;
+
+            try {
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    String no_str = rs.getString("no_str");
+                    String id_karyawan = rs.getString("id_karyawan");
+                    String kd_bagian = rs.getString("kd_bagian");                    
+                    String namaDokter = rs.getString("nama");
+                    String jkDokter = rs.getString("jenis_kelamin");
+                    String alamatDokter = rs.getString("alamat");
+                    String tglDokter = rs.getString("tgl_lahir");
+                    String HPdokter = rs.getString("no_hp");
+
+                    if (String.valueOf(no_str).contains(userInput) || namaDokter.contains(userInput)
+                            || kd_bagian.contains(userInput) || id_karyawan.contains(userInput)) {
+
+                        System.out.println(no_str);
+                        String[] rowData = {no_str, kd_bagian, id_karyawan, namaDokter, jkDokter, alamatDokter, tglDokter,HPdokter};
+                        rows.add(rowData);                        
+                        rowCount++;
+                    }
+                }
+
+                matchedData = new Object[rows.size()][];
+                for (int i = 0; i < rows.size(); i++) {
+                    matchedData[i] = rows.get(i);
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "error");
+            }
+
+
+            model.setDataVector(matchedData, header);
+            tableCariDokter.setModel(model);
+            conn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan " + e.getMessage());
+        }
     }//GEN-LAST:event_buttonSearchActionPerformed
 
     private void deleteDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDokterActionPerformed
@@ -2577,21 +2645,68 @@ public class Admin extends javax.swing.JFrame {
             pst.setString(1, deleteDokter.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan " + e.getMessage());
         }
     }//GEN-LAST:event_buttonDeleteActionPerformed
 
-    private void textSearchObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSearchObatActionPerformed
+    private void textCariObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCariObatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textSearchObatActionPerformed
+    }//GEN-LAST:event_textCariObatActionPerformed
 
     private void buttonSearchObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchObatActionPerformed
-        // TODO add your handling code here:
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
+            DefaultTableModel model = new DefaultTableModel();
+            String query = "select * from obat where kd_obat like ? OR nama_obat like ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            String userInput = textCariObat.getText();
+            stmt.setString(1, "%" + userInput + "%");
+            stmt.setString(2, "%" + userInput + "%");
+
+            Object[] header = {"Kode Obat", "Nama Obat", "Stok Obat", "Harga Obat"};
+            Object[][] matchedData = null;
+            List<Object[]> rows = new ArrayList<>();
+            int rowCount = 0;
+
+            try {
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    String kd_obat = rs.getString("kd_obat");
+                    String nama_obat = rs.getString("nama_obat");
+                    String stok = rs.getString("stok");                    
+                    String harga_obat = rs.getString("harga_obat");
+
+                    if (String.valueOf(kd_obat).contains(userInput) || nama_obat.contains(userInput)) {
+
+                        System.out.println(kd_obat);
+                        String[] rowData = {kd_obat, nama_obat, stok, harga_obat};
+                        rows.add(rowData);                        
+                        rowCount++;
+                    }
+                }
+
+                matchedData = new Object[rows.size()][];
+                for (int i = 0; i < rows.size(); i++) {
+                    matchedData[i] = rows.get(i);
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "error");
+            }
+
+
+            model.setDataVector(matchedData, header);
+            tableSearchObat.setModel(model);
+            conn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan " + e.getMessage());
+        }
     }//GEN-LAST:event_buttonSearchObatActionPerformed
 
     private void deleteObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteObatActionPerformed
-        
+
     }//GEN-LAST:event_deleteObatActionPerformed
 
     private void buttonDeleteObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteObatActionPerformed
@@ -2603,7 +2718,7 @@ public class Admin extends javax.swing.JFrame {
             pst.setString(1, deleteObat.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Terjadi Kegagalan " + e.getMessage());
         }
     }//GEN-LAST:event_buttonDeleteObatActionPerformed
@@ -2633,7 +2748,54 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_upWaktuActionPerformed
 
     private void buttonSearchShiftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchShiftActionPerformed
-        // TODO add your handling code here:
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
+            DefaultTableModel model = new DefaultTableModel();
+            String query = "select * from shift where kd_shift like ? OR hari like ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            String userInput = textSearchShift.getText();
+            stmt.setString(1, "%" + userInput + "%");
+            stmt.setString(2, "%" + userInput + "%");
+
+            Object[] header = {"kd_shift", "Hari", "Waktu"};
+            Object[][] matchedData = null;
+            List<Object[]> rows = new ArrayList<>();
+            int rowCount = 0;
+
+            try {
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    String kd_shift = rs.getString("kd_shift");
+                    String hari = rs.getString("hari");
+                    String waktu = rs.getString("waktu");                    
+
+
+                    if (String.valueOf(kd_shift).contains(userInput) || hari.contains(userInput)) {
+
+                        System.out.println(kd_shift);
+                        String[] rowData = {kd_shift, hari, waktu};
+                        rows.add(rowData);                        
+                        rowCount++;
+                    }
+                }
+
+                matchedData = new Object[rows.size()][];
+                for (int i = 0; i < rows.size(); i++) {
+                    matchedData[i] = rows.get(i);
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "error");
+            }
+
+
+            model.setDataVector(matchedData, header);
+            tableSearchShift.setModel(model);
+            conn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan " + e.getMessage());
+        }
     }//GEN-LAST:event_buttonSearchShiftActionPerformed
 
     private void textSearchShiftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSearchShiftActionPerformed
@@ -2645,7 +2807,17 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_textDeleteShiftActionPerformed
 
     private void buttonDeleteShiftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteShiftActionPerformed
-        // TODO add your handling code here:
+        try {
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
+            String sql = "DELETE FROM shift where kd_shift = ?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, textDeleteShift.getText());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan " + e.getMessage());
+        }
     }//GEN-LAST:event_buttonDeleteShiftActionPerformed
 
     private void textKodePembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textKodePembayaranActionPerformed
@@ -2688,7 +2860,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonHapusPasienActionPerformed
 
     private void deletePasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePasienActionPerformed
-        
+
     }//GEN-LAST:event_deletePasienActionPerformed
 
     private void buttonTambahPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahPasienActionPerformed
@@ -2744,7 +2916,55 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_textCariPasienActionPerformed
 
     private void buttonCariPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariPasienActionPerformed
-        // TODO add your handling code here:
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
+            DefaultTableModel model = new DefaultTableModel();
+            String query = "select * from pasien where nik like ? OR nama_pasien like ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            String userInput = textCariPasien.getText();
+            stmt.setString(1, "%" + userInput + "%");
+            stmt.setString(2, "%" + userInput + "%");
+
+            Object[] header = {"NIK", "Nama Pasien", "Usia Pasien", "Jenis Kelamin", "Alamat", "Nomor HP"};
+            Object[][] matchedData = null;
+            List<Object[]> rows = new ArrayList<>();
+            int rowCount = 0;
+
+            try {
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    String nik = rs.getString("nik");
+                    String nama_pasien = rs.getString("nama_pasien");
+                    String usia = rs.getString("usia");
+                    String jk = rs.getString("jenis_kelamin");
+                    String alamatPasien = rs.getString("alamat");
+                    String HPpasien = rs.getString("no_hp");
+
+                    if (String.valueOf(nik).contains(userInput) || nama_pasien.contains(userInput)){
+                        System.out.println(nik);
+                        String[] rowData = {nik, nama_pasien, usia, jk, alamatPasien, HPpasien};
+                        rows.add(rowData);                        
+                        rowCount++;
+                    }
+                }
+
+                matchedData = new Object[rows.size()][];
+                for (int i = 0; i < rows.size(); i++) {
+                    matchedData[i] = rows.get(i);
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "error");
+            }
+
+
+            model.setDataVector(matchedData, header);
+            tableCariPasien.setModel(model);
+            conn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan " + e.getMessage());
+        }
     }//GEN-LAST:event_buttonCariPasienActionPerformed
 
     private void hpKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hpKaryawanActionPerformed
@@ -2814,7 +3034,58 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_textCariKaryawanActionPerformed
 
     private void buttonCariKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariKaryawanActionPerformed
-        // TODO add your handling code here:
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
+            DefaultTableModel model = new DefaultTableModel();
+            String query = "select * from karyawan where id_karyawan like ? OR nama like ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            String userInput = textCariKaryawan.getText();
+            stmt.setString(1, "%" + userInput + "%");
+            stmt.setString(2, "%" + userInput + "%");
+
+            Object[] header = {"ID Karyawan", "Kode Bagian", "Kode Shift", "Nama Karyawan", "Jenis Kelamin", "Alamat", "Tanggal Lahir", "Nomor HP", "Jabatan"};
+            Object[][] matchedData = null;
+            List<Object[]> rows = new ArrayList<>();
+            int rowCount = 0;
+
+            try {
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    String id_karyawan = rs.getString("id_karyawan");
+                    String kd_bagian = rs.getString("kd_bagian");
+                    String kd_shift = rs.getString("kd_shift");                    
+                    String nama_karyawan = rs.getString("nama");
+                    String jenis_kelamin = rs.getString("jenis_kelamin");
+                    String alamat = rs.getString("alamat");
+                    String tgl_lahir = rs.getString("tgl_lahir");
+                    String no_hp = rs.getString("no_hp");
+                    String jabatan = rs.getString("jabatan");
+
+                    if (String.valueOf(id_karyawan).contains(userInput) || nama_karyawan.contains(userInput)) {
+                        System.out.println(id_karyawan);
+                        String[] rowData = {id_karyawan, kd_bagian, kd_shift, nama_karyawan, jenis_kelamin, alamat, tgl_lahir,no_hp, jabatan};
+                        rows.add(rowData);                        
+                        rowCount++;
+                    }
+                }
+
+                matchedData = new Object[rows.size()][];
+                for (int i = 0; i < rows.size(); i++) {
+                    matchedData[i] = rows.get(i);
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "error");
+            }
+
+
+            model.setDataVector(matchedData, header);
+            tableCariKaryawan.setModel(model);
+            conn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan " + e.getMessage());
+        }
     }//GEN-LAST:event_buttonCariKaryawanActionPerformed
 
     private void buttonHapusKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHapusKaryawanActionPerformed
@@ -2837,11 +3108,58 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteKaryawanActionPerformed
 
     private void buttonTambahPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahPemeriksaanActionPerformed
-        // TODO add your handling code here:
+        try {
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
+            String sql = "INSERT INTO pemeriksaan(nik, kd_bagian, id_karyawan, diagnosa, keluhan, tgl_periksa) VALUES(?, ?, ?, ?,?,curdate());";
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            pst.setString(1, textNIKPasienPemeriksaan.getText());
+            pst.setString(2, textKodeBagianPemeriksaan.getText());
+            pst.setString(3, textIDKaryawanPemeriksaan.getText());
+            pst.setString(4, textDiagnosaPemeriksaan.getText());
+            pst.setString(5, textKeluhanPemeriksaan.getText());
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
+            conn.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan " + e.getMessage());
+        }
     }//GEN-LAST:event_buttonTambahPemeriksaanActionPerformed
 
     private void buttonPerbaruiPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPerbaruiPemeriksaanActionPerformed
-        // TODO add your handling code here:
+        try {
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
+            String nik = textNIKPasienPemeriksaan1.getText();
+            String kodeBagian = textKodeBagianPemeriksaan1.getText(); // Assuming this is the value for kd_bagian
+            String idKaryawan = textIDKaryawanPemeriksaan1.getText(); // Assuming this is the value for id_karyawan
+            String diagnosa = textDiagnosaPemeriksaan1.getText(); // Assuming this is the value for Diagnosa
+            String keluhan = textKeluhanPemeriksaan1.getText();
+            String sql = "UPDATE pemeriksaan SET "
+                    + "kd_bagian = IFNULL(?, kd_bagian), "
+                    + // Use IFNULL to set NULL if value is null
+                    "id_karyawan = IFNULL(?, id_karyawan), "
+                    + "Diagnosa = IFNULL(?, Diagnosa), "
+                    + "keluhan = IFNULL(?, keluhan) "
+                    + "WHERE nik = ?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            pst.setString(1, kodeBagian == null ? null : kodeBagian); // Check for null values
+            pst.setString(2, idKaryawan == null ? null : idKaryawan);
+            pst.setString(3, diagnosa == null ? null : diagnosa);
+            pst.setString(4, keluhan == null ? null : keluhan);
+            pst.setString(5, nik);
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Data berhasil diperbarui");
+            conn.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan " + e.getMessage());
+        }
     }//GEN-LAST:event_buttonPerbaruiPemeriksaanActionPerformed
 
     private void textCariPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCariPemeriksaanActionPerformed
@@ -2849,11 +3167,76 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_textCariPemeriksaanActionPerformed
 
     private void buttonCariPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariPemeriksaanActionPerformed
-        // TODO add your handling code here:
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
+            DefaultTableModel model = new DefaultTableModel();
+            String query = "select * from pemeriksaan where kd_periksa like ? OR nik like ? OR id_karyawan like ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            String userInput = textCariPemeriksaan.getText();
+            stmt.setString(1, "%" + userInput + "%");
+            stmt.setString(2, "%" + userInput + "%");
+            stmt.setString(3, "%" + userInput + "%");
+
+            Object[] header = {"Kode Periksa", "NIK", "Kode Bagian", "ID Karyawan", "Keluhan", "Diagnosa", "Tanggal Periksa"};
+            Object[][] matchedData = null;
+            List<Object[]> rows = new ArrayList<>();
+            int rowCount = 0;
+
+            try {
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    String kd_periksa = rs.getString("kd_periksa");
+                    String nik = rs.getString("nik");
+                    String kd_bagian = rs.getString("kd_bagian");
+                    String id_karyawan = rs.getString("id_karyawan");
+                    String keluhan = rs.getString("Keluhan");
+                    String diagnosa = rs.getString("diagnosa");
+                    String tgl_periksa = rs.getString("tgl_periksa");
+
+                    if (String.valueOf(kd_periksa).contains(userInput) || nik.contains(userInput)
+                            || kd_bagian.contains(userInput) || id_karyawan.contains(userInput)) {
+
+                        System.out.println(nik);
+                        String[] rowData = {kd_periksa, nik, kd_bagian, id_karyawan, keluhan, diagnosa, tgl_periksa};
+                        rows.add(rowData);                        
+                        rowCount++;
+                    }
+                }
+
+                matchedData = new Object[rows.size()][];
+                for (int i = 0; i < rows.size(); i++) {
+                    matchedData[i] = rows.get(i);
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "error");
+            }
+
+
+            model.setDataVector(matchedData, header);
+            tableCariPemeriksaan.setModel(model);
+            conn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan " + e.getMessage());
+        }
     }//GEN-LAST:event_buttonCariPemeriksaanActionPerformed
 
     private void buttonHapusKodePemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHapusKodePemeriksaanActionPerformed
-        // TODO add your handling code here:
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
+            String sql = "delete from pemeriksaan where kd_periksa = ?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            pst.setString(1, textHapusPemeriksaan.getText());
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Data berhasil diperbarui");
+            conn.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan " + e.getMessage());
+        }
     }//GEN-LAST:event_buttonHapusKodePemeriksaanActionPerformed
 
     private void textHapusPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textHapusPemeriksaanActionPerformed
@@ -2925,12 +3308,10 @@ public class Admin extends javax.swing.JFrame {
             String sql = "UPDATE obat SET nama_obat = ?, stok = ?, harga_obat = ? where kd_obat = ?;";
             PreparedStatement pst = conn.prepareStatement(sql);
 
-            
             pst.setString(1, namaObat.getText());
             pst.setInt(2, Integer.parseInt(stokObat.getText()));
             pst.setBigDecimal(3, new BigDecimal(hargaObat.getText()));
             pst.setString(4, kdObat.getText());
-
 
             pst.executeUpdate();
 
@@ -2945,6 +3326,48 @@ public class Admin extends javax.swing.JFrame {
             e.printStackTrace(); // Untuk mencetak detail stack trace ke konsol
         }
     }//GEN-LAST:event_buttonUpdateObatActionPerformed
+
+    private void buttonTambahShiftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahShiftActionPerformed
+         try {
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
+            String sql = "INSERT INTO shift (kd_shift, hari, waktu) VALUES( ?, ?, ?);";
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            pst.setString(1, kdJadwal.getText());
+            pst.setString(2, hari.getText());
+            pst.setString(3, waktu.getText());
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
+            conn.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan: " + e.getMessage());
+            e.printStackTrace(); // Untuk mencetak detail stack trace ke konsol
+        }
+    }//GEN-LAST:event_buttonTambahShiftActionPerformed
+
+    private void buttonUpdateShiftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateShiftActionPerformed
+        try {
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
+            String sql = "UPDATE shift SET hari = ?, waktu = ? where kd_shift = ?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            pst.setString(1, upKdjadwal.getText());
+            pst.setString(2, upHari.getText());
+            pst.setString(3, upWaktu.getText());
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Data berhasil diperbarui");
+            conn.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan: " + e.getMessage());
+            e.printStackTrace(); // Untuk mencetak detail stack trace ke konsol
+        }
+    }//GEN-LAST:event_buttonUpdateShiftActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3165,14 +3588,16 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTabbedPane shiftTabbedPane;
     private javax.swing.JTextField stokObat;
     private javax.swing.JTextField strDokter;
+    private javax.swing.JTable tableCariDokter;
     private javax.swing.JTable tableCariKaryawan;
     private javax.swing.JTable tableCariPasien;
     private javax.swing.JTable tableCariPemeriksaan;
-    private javax.swing.JTable tableSearch;
     private javax.swing.JTable tableSearchObat;
     private javax.swing.JTable tableSearchPembayaran;
     private javax.swing.JTable tableSearchShift;
+    private javax.swing.JTextField textCariDokter;
     private javax.swing.JTextField textCariKaryawan;
+    private javax.swing.JTextField textCariObat;
     private javax.swing.JTextField textCariPasien;
     private javax.swing.JTextField textCariPemeriksaan;
     private javax.swing.JTextField textDeleteShift;
@@ -3189,8 +3614,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField textKodeResep;
     private javax.swing.JTextField textNIKPasienPemeriksaan;
     private javax.swing.JTextField textNIKPasienPemeriksaan1;
-    private javax.swing.JTextField textSearch;
-    private javax.swing.JTextField textSearchObat;
     private javax.swing.JTextField textSearchPembayaran;
     private javax.swing.JTextField textSearchShift;
     private javax.swing.JTextField textTotalPembayaran;
