@@ -10,6 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -2689,6 +2690,7 @@ public class Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             //Class.forName("com.mysql.cj.jdbc.Driver");
+            
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Adwira121804");
             String sql = "INSERT INTO pemeriksaan(nik, kd_bagian, id_karyawan, diagnosa, keluhan, tgl_periksa) VALUES(?, ?, ?, ?,?,curdate());";
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -2701,6 +2703,8 @@ public class Admin extends javax.swing.JFrame {
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
+            
+            
             conn.close();
 
         } catch (Exception e) {
