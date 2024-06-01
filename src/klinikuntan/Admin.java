@@ -218,18 +218,24 @@ public class Admin extends javax.swing.JFrame {
         textIDKaryawanPemeriksaan = new javax.swing.JTextField();
         textDiagnosaPemeriksaan = new javax.swing.JTextField();
         textKeluhanPemeriksaan = new javax.swing.JTextField();
+        labelKeluhan2 = new javax.swing.JLabel();
+        hargaPemeriksaan = new javax.swing.JTextField();
         panelPerbaruiPemeriksaan = new javax.swing.JPanel();
         labelNikPasienPemeriksaan1 = new javax.swing.JLabel();
         labelIDKaryawanPemeriksaan1 = new javax.swing.JLabel();
         labelKodeBagianPemeriksaan1 = new javax.swing.JLabel();
         labelDiagnosa1 = new javax.swing.JLabel();
         labelKeluhan1 = new javax.swing.JLabel();
-        textNIKPasienPemeriksaan1 = new javax.swing.JTextField();
+        upKodePemeriksaan = new javax.swing.JTextField();
         buttonPerbaruiPemeriksaan = new javax.swing.JButton();
         textKodeBagianPemeriksaan1 = new javax.swing.JTextField();
         textIDKaryawanPemeriksaan1 = new javax.swing.JTextField();
         textDiagnosaPemeriksaan1 = new javax.swing.JTextField();
         textKeluhanPemeriksaan1 = new javax.swing.JTextField();
+        labelNikPasienPemeriksaan2 = new javax.swing.JLabel();
+        textNIKPasienPemeriksaan2 = new javax.swing.JTextField();
+        labelKeluhan3 = new javax.swing.JLabel();
+        upHargaPemeriksaan = new javax.swing.JTextField();
         panelCariPemeriksaan = new javax.swing.JPanel();
         textCariPemeriksaan = new javax.swing.JTextField();
         buttonCariPemeriksaan = new javax.swing.JButton();
@@ -1792,6 +1798,11 @@ public class Admin extends javax.swing.JFrame {
 
         textKeluhanPemeriksaan.setPreferredSize(new java.awt.Dimension(300, 25));
 
+        labelKeluhan2.setText("Harga");
+        labelKeluhan2.setPreferredSize(new java.awt.Dimension(90, 25));
+
+        hargaPemeriksaan.setPreferredSize(new java.awt.Dimension(300, 25));
+
         javax.swing.GroupLayout panelTambahPemeriksaanLayout = new javax.swing.GroupLayout(panelTambahPemeriksaan);
         panelTambahPemeriksaan.setLayout(panelTambahPemeriksaanLayout);
         panelTambahPemeriksaanLayout.setHorizontalGroup(
@@ -1806,11 +1817,13 @@ public class Admin extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelTambahPemeriksaanLayout.createSequentialGroup()
                         .addGroup(panelTambahPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelDiagnosa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelKeluhan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelKeluhan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelKeluhan2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(57, 57, 57)
                         .addGroup(panelTambahPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textDiagnosaPemeriksaan, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-                            .addComponent(textKeluhanPemeriksaan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(textKeluhanPemeriksaan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(hargaPemeriksaan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(panelTambahPemeriksaanLayout.createSequentialGroup()
                         .addComponent(labelKodeBagianPemeriksaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(57, 57, 57)
@@ -1848,14 +1861,18 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(panelTambahPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelKeluhan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textKeluhanPemeriksaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(panelTambahPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelKeluhan2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hargaPemeriksaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
                 .addComponent(buttonTambahPemeriksaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
 
         pemeriksaanTabbedPane.addTab("Tambah", panelTambahPemeriksaan);
 
-        labelNikPasienPemeriksaan1.setText("NIK Pasien");
+        labelNikPasienPemeriksaan1.setText("Kode Pemeriksaan");
         labelNikPasienPemeriksaan1.setPreferredSize(new java.awt.Dimension(90, 25));
 
         labelIDKaryawanPemeriksaan1.setText("ID Karyawan");
@@ -1870,7 +1887,7 @@ public class Admin extends javax.swing.JFrame {
         labelKeluhan1.setText("Keluhan");
         labelKeluhan1.setPreferredSize(new java.awt.Dimension(90, 25));
 
-        textNIKPasienPemeriksaan1.setPreferredSize(new java.awt.Dimension(300, 25));
+        upKodePemeriksaan.setPreferredSize(new java.awt.Dimension(300, 25));
 
         buttonPerbaruiPemeriksaan.setText("Perbarui");
         buttonPerbaruiPemeriksaan.setMaximumSize(new java.awt.Dimension(80, 25));
@@ -1890,6 +1907,16 @@ public class Admin extends javax.swing.JFrame {
 
         textKeluhanPemeriksaan1.setPreferredSize(new java.awt.Dimension(300, 25));
 
+        labelNikPasienPemeriksaan2.setText("NIK Pasien");
+        labelNikPasienPemeriksaan2.setPreferredSize(new java.awt.Dimension(90, 25));
+
+        textNIKPasienPemeriksaan2.setPreferredSize(new java.awt.Dimension(300, 25));
+
+        labelKeluhan3.setText("Harga");
+        labelKeluhan3.setPreferredSize(new java.awt.Dimension(90, 25));
+
+        upHargaPemeriksaan.setPreferredSize(new java.awt.Dimension(300, 25));
+
         javax.swing.GroupLayout panelPerbaruiPemeriksaanLayout = new javax.swing.GroupLayout(panelPerbaruiPemeriksaan);
         panelPerbaruiPemeriksaan.setLayout(panelPerbaruiPemeriksaanLayout);
         panelPerbaruiPemeriksaanLayout.setHorizontalGroup(
@@ -1898,17 +1925,19 @@ public class Admin extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addGroup(panelPerbaruiPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelPerbaruiPemeriksaanLayout.createSequentialGroup()
-                        .addComponent(labelNikPasienPemeriksaan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addComponent(textNIKPasienPemeriksaan1, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE))
+                        .addComponent(labelNikPasienPemeriksaan1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(upKodePemeriksaan, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelPerbaruiPemeriksaanLayout.createSequentialGroup()
                         .addGroup(panelPerbaruiPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelDiagnosa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelKeluhan1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelKeluhan1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelKeluhan3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(57, 57, 57)
                         .addGroup(panelPerbaruiPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textDiagnosaPemeriksaan1, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-                            .addComponent(textKeluhanPemeriksaan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(textKeluhanPemeriksaan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(upHargaPemeriksaan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(panelPerbaruiPemeriksaanLayout.createSequentialGroup()
                         .addComponent(labelKodeBagianPemeriksaan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(57, 57, 57)
@@ -1916,7 +1945,11 @@ public class Admin extends javax.swing.JFrame {
                     .addGroup(panelPerbaruiPemeriksaanLayout.createSequentialGroup()
                         .addComponent(labelIDKaryawanPemeriksaan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(57, 57, 57)
-                        .addComponent(textIDKaryawanPemeriksaan1, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)))
+                        .addComponent(textIDKaryawanPemeriksaan1, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE))
+                    .addGroup(panelPerbaruiPemeriksaanLayout.createSequentialGroup()
+                        .addComponent(labelNikPasienPemeriksaan2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
+                        .addComponent(textNIKPasienPemeriksaan2, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)))
                 .addGap(167, 167, 167))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerbaruiPemeriksaanLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1929,7 +1962,11 @@ public class Admin extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(panelPerbaruiPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNikPasienPemeriksaan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textNIKPasienPemeriksaan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(upKodePemeriksaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(panelPerbaruiPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNikPasienPemeriksaan2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textNIKPasienPemeriksaan2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelPerbaruiPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelKodeBagianPemeriksaan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1946,7 +1983,11 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(panelPerbaruiPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelKeluhan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textKeluhanPemeriksaan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(panelPerbaruiPemeriksaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelKeluhan3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(upHargaPemeriksaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addComponent(buttonPerbaruiPemeriksaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
@@ -3111,7 +3152,7 @@ public class Admin extends javax.swing.JFrame {
         try {
             //Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
-            String sql = "INSERT INTO pemeriksaan(nik, kd_bagian, id_karyawan, diagnosa, keluhan, tgl_periksa) VALUES(?, ?, ?, ?,?,curdate());";
+            String sql = "INSERT INTO pemeriksaan(nik, kd_bagian, id_karyawan, diagnosa, keluhan, tgl_periksa, harga) VALUES(?, ?, ?, ?,?,curdate(), ?);";
             PreparedStatement pst = conn.prepareStatement(sql);
 
             pst.setString(1, textNIKPasienPemeriksaan.getText());
@@ -3119,6 +3160,7 @@ public class Admin extends javax.swing.JFrame {
             pst.setString(3, textIDKaryawanPemeriksaan.getText());
             pst.setString(4, textDiagnosaPemeriksaan.getText());
             pst.setString(5, textKeluhanPemeriksaan.getText());
+            pst.setBigDecimal(6, new BigDecimal(hargaPemeriksaan.getText()));
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
@@ -3133,25 +3175,31 @@ public class Admin extends javax.swing.JFrame {
         try {
             //Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
-            String nik = textNIKPasienPemeriksaan1.getText();
+            String nik = textNIKPasienPemeriksaan2.getText();
             String kodeBagian = textKodeBagianPemeriksaan1.getText(); // Assuming this is the value for kd_bagian
             String idKaryawan = textIDKaryawanPemeriksaan1.getText(); // Assuming this is the value for id_karyawan
             String diagnosa = textDiagnosaPemeriksaan1.getText(); // Assuming this is the value for Diagnosa
             String keluhan = textKeluhanPemeriksaan1.getText();
+            String harga = upHargaPemeriksaan.getText();
+            
+            
             String sql = "UPDATE pemeriksaan SET "
-                    + "kd_bagian = IFNULL(?, kd_bagian), "
-                    + // Use IFNULL to set NULL if value is null
-                    "id_karyawan = IFNULL(?, id_karyawan), "
+                    + "nik = IFNULL(?, nik)," 
+                    +"kd_bagian = IFNULL(?, kd_bagian),"                    
+                    + "id_karyawan = IFNULL(?, id_karyawan), "
                     + "Diagnosa = IFNULL(?, Diagnosa), "
-                    + "keluhan = IFNULL(?, keluhan) "
-                    + "WHERE nik = ?";
+                    + "keluhan = IFNULL(?, keluhan), "
+                    + "harga = IFNULL(?, harga),"
+                    + "WHERE kd_periksa = ?";
             PreparedStatement pst = conn.prepareStatement(sql);
 
-            pst.setString(1, kodeBagian == null ? null : kodeBagian); // Check for null values
-            pst.setString(2, idKaryawan == null ? null : idKaryawan);
-            pst.setString(3, diagnosa == null ? null : diagnosa);
-            pst.setString(4, keluhan == null ? null : keluhan);
-            pst.setString(5, nik);
+            pst.setString(1, nik == null ? null : nik);
+            pst.setString(2, kodeBagian == null ? null : kodeBagian); // Check for null values
+            pst.setString(3, idKaryawan == null ? null : idKaryawan);
+            pst.setString(4, diagnosa == null ? null : diagnosa);
+            pst.setString(5, keluhan == null ? null : keluhan);
+            pst.setString(6, harga == null ? null : harga);
+            pst.setString(7, upKodePemeriksaan.getText());
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Data berhasil diperbarui");
@@ -3453,6 +3501,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> genderKaryawan;
     private javax.swing.JComboBox<String> genderPasien;
     private javax.swing.JTextField hargaObat;
+    private javax.swing.JTextField hargaPemeriksaan;
     private javax.swing.JTextField hari;
     private javax.swing.JTextField hpDokter;
     private javax.swing.JTextField hpKaryawan;
@@ -3504,6 +3553,8 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel labelKDBagian1;
     private javax.swing.JLabel labelKeluhan;
     private javax.swing.JLabel labelKeluhan1;
+    private javax.swing.JLabel labelKeluhan2;
+    private javax.swing.JLabel labelKeluhan3;
     private javax.swing.JLabel labelKodeBagianKaryawan;
     private javax.swing.JLabel labelKodeBagianKaryawan1;
     private javax.swing.JLabel labelKodeBagianPemeriksaan;
@@ -3525,6 +3576,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel labelNikPasien1;
     private javax.swing.JLabel labelNikPasienPemeriksaan;
     private javax.swing.JLabel labelNikPasienPemeriksaan1;
+    private javax.swing.JLabel labelNikPasienPemeriksaan2;
     private javax.swing.JLabel labelNoHP;
     private javax.swing.JLabel labelNoHP1;
     private javax.swing.JLabel labelNoSTR;
@@ -3613,7 +3665,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField textKodePembayaran;
     private javax.swing.JTextField textKodeResep;
     private javax.swing.JTextField textNIKPasienPemeriksaan;
-    private javax.swing.JTextField textNIKPasienPemeriksaan1;
+    private javax.swing.JTextField textNIKPasienPemeriksaan2;
     private javax.swing.JTextField textSearchPembayaran;
     private javax.swing.JTextField textSearchShift;
     private javax.swing.JTextField textTotalPembayaran;
@@ -3625,6 +3677,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> upGenderDokter;
     private javax.swing.JComboBox<String> upGenderKaryawan;
     private javax.swing.JComboBox<String> upGenderPasien;
+    private javax.swing.JTextField upHargaPemeriksaan;
     private javax.swing.JTextField upHari;
     private javax.swing.JTextField upIdDokter;
     private javax.swing.JTextField upIdKaryawan;
@@ -3634,6 +3687,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField upKdObat;
     private javax.swing.JTextField upKdShiftKaryawan;
     private javax.swing.JTextField upKdjadwal;
+    private javax.swing.JTextField upKodePemeriksaan;
     private javax.swing.JTextField upNamaDokter;
     private javax.swing.JTextField upNamaKaryawan;
     private javax.swing.JTextField upNamaObat;
