@@ -124,7 +124,6 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         String id = kolomId.getText();
         String pw = kolomPw.getText();
-        
         try{
             //Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/klinik_pratama_untan", "root", "Ferdian123");
@@ -137,17 +136,19 @@ public class LoginPage extends javax.swing.JFrame {
             while(rs.next()){
                 String idKaryawan = rs.getString("id_karyawan");
                 String password = rs.getString("password");
-                
-                if(id.equals(idKaryawan) && pw.equals(password)){
-                    new Dashboard().setVisible(true);
+                String jabatan = rs.getString("jabatan");
+                if(id.equals(idKaryawan) && pw.equals(password) && jabatan.contains("Dokter")){
+                    new Doctor().setVisible(true);
                     dispose();
                 }
-                else{
-                    JOptionPane.showMessageDialog(null, "ID Karyawan dan Password Salah");
-                }
+                else if(id.equals(idKaryawan) && pw.equals(password)){
+                    new Admin().setVisible(true);
+                    dispose();
+                }else {
+                JOptionPane.showMessageDialog(null, "ID Karyawan dan Password Salah");}
             }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "asd");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Terjadi Kegagalan " + e.getMessage());
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
